@@ -7,8 +7,11 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\bensonc\\Documents\\Projects\\Crossword\\Test.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt"));
         Random rndPosition = new Random();
+        PrintWriter printWriter = new PrintWriter("test.txt", StandardCharsets.UTF_8);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt", true));
+
 
         String text = "hello";
         int row = 10;
@@ -34,8 +37,17 @@ public class Main {
         char endChar = Line.charAt(text.length() - 1);
         replaced = Line.substring(position);
 
-        //you stopped here
-        Line.replace(replaced, text);
+
+
+        //create a new string by importing a line adding hello and re writing
+       String endLine = Line.substring(position,text.length());
+       String startLine= Line.replace(replaced, text);
+
+       String newLine =startLine+endLine;
+
+
+    bufferedWriter.write(newLine);
+    bufferedWriter.close();
 
     }
     //check length to see if hello is in range forward
@@ -59,7 +71,7 @@ public class Main {
     //change to Recursion, creates the a textfile and writes random charachters
     public static void createTable(int numRows, int numColumn) throws IOException {
         PrintWriter printWriter = new PrintWriter("test.txt", StandardCharsets.UTF_8);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\bensonc\\Documents\\Projects\\Crossword\\Test.txt", true));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt", true));
         Random rnd = new Random();
 
         for (int j = 0; j < numRows; j++) {
