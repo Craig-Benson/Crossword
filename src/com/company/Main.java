@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
@@ -73,11 +74,15 @@ public class Main {
         PrintWriter printWriter = new PrintWriter("test.txt", StandardCharsets.UTF_8);
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt", true));
         Random rnd = new Random();
+char[][] List =new char[10][10];
 
         for (int j = 0; j < numRows; j++) {
 
             for (int i = 0; i < numColumn; i++) {
                 char c = (char) (rnd.nextInt(26) + 'a');
+
+                //add another nested loop
+                List[j][i]+= c;
                 bufferedWriter.append(c);
             }
             bufferedWriter.newLine();
