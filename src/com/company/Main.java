@@ -8,10 +8,12 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt"));
+
+        File file = new File(System.getProperty("user.dir")+"\\test.txt");
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         Random rndPosition = new Random();
         PrintWriter printWriter = new PrintWriter("test.txt", StandardCharsets.UTF_8);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt", true));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter((file), true));
 
 
         String text = "hello";
@@ -70,22 +72,36 @@ public class Main {
 
 
     //change to Recursion, creates the a textfile and writes random charachters
+
     public static void createTable(int numRows, int numColumn) throws IOException {
-        PrintWriter printWriter = new PrintWriter("test.txt", StandardCharsets.UTF_8);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Rekeh\\Documents\\Projects\\Github\\Projects\\Crossword\\test.txt", true));
+        File file = new File(System.getProperty("user.dir")+"\\test.txt");
+        PrintWriter printWriter = new PrintWriter(file, StandardCharsets.UTF_8);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
         Random rnd = new Random();
-char[][] List =new char[10][10];
+String[][] List =new String[1][10];
 
-        for (int j = 0; j < numRows; j++) {
+//re do this
+        for (int i = 0; i < 1; i++) {
 
-            for (int i = 0; i < numColumn; i++) {
-                char c = (char) (rnd.nextInt(26) + 'a');
+            for (int j = 0; j < numColumn; j++) {
+                String charachters="";
+                for(int k = 0; k<numColumn;k++){
 
-                //add another nested loop
-                List[j][i]+= c;
-                bufferedWriter.append(c);
+                    char c = (char) (rnd.nextInt(26) + 'a');
+
+                            charachters += c;
+
+
+                    //add another nested loop
+
+                }
+
+                        List[i][j] = charachters;
+
+
+                bufferedWriter.append(List[i][j]);
             }
-            bufferedWriter.newLine();
+            //bufferedWriter.newLine();
 
         }
         bufferedWriter.close();
