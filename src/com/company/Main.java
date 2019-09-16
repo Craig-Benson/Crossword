@@ -30,8 +30,9 @@ public class Main {
 
 
         //reads and stores the first line
-        String Line = bufferedReader.readLine();
+        BufferedReader readLine = new BufferedReader(new FileReader(file));
 
+        String Line = readLine.readLine();
         //returns the position 'hello' will be placed
         position = checkLength(position, column, intTextLength, acc);
 
@@ -78,7 +79,7 @@ public class Main {
         PrintWriter printWriter = new PrintWriter(file, StandardCharsets.UTF_8);
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
         Random rnd = new Random();
-String[][] List =new String[1][10];
+        String[][] List =new String[1][10];
 
 //re do this
         for (int i = 0; i < 1; i++) {
@@ -100,8 +101,9 @@ String[][] List =new String[1][10];
 
 
                 bufferedWriter.append(List[i][j]);
+                bufferedWriter.newLine();
             }
-            //bufferedWriter.newLine();
+
 
         }
         bufferedWriter.close();
