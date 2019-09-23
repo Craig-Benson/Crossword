@@ -13,7 +13,9 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         Random rndPosition = new Random();
         PrintWriter printWriter = new PrintWriter("test.txt", StandardCharsets.UTF_8);
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter((file), true));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter((file), false));
+LineNumberReader lineNumber = new LineNumberReader(new FileReader(file));
+
 
 
         String text = "hello";
@@ -52,6 +54,7 @@ public class Main {
 
     bufferedWriter.write(newLine);
     bufferedWriter.close();
+        System.out.println(lineNumber.getLineNumber());
 
     }
     //check length to see if hello is in range forward
